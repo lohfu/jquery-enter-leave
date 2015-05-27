@@ -1,0 +1,28 @@
+{
+  "name": "jquery-valet",
+  "version": "0.1.0",
+  "description": "Simplifies animating elements added or removed to the DOM. Greatly inspired by Angular's ngAnimate.",
+  "main": "jquery-valet.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thecodebureau/jquery-valet.git"
+  },
+  "keywords": [
+    "jQuery",
+    "CSS",
+    "animation",
+    "transition"
+  ],
+  "author": "The Code Bureau <info@thecodebureau.com> (https://thecodebureau.com)",
+	"contributors": [
+		"Linus Miller <linus.miller@thecodebureau.com>"
+	],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thecodebureau/jquery-valet/issues"
+  },
+  "homepage": "https://github.com/thecodebureau/jquery-valet#readme"
+}
