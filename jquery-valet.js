@@ -41,20 +41,41 @@ function remove(next) {
 	next();
 }
 
+function hide(next) {
+	// TODO remove active, animate, leave
+	$(this).addClass('hidden').removeClass('visible');
+
+	next();
+}
+
 $.fn.extend({
 
+	alternate: function(animateHeight) {
+		if(this.hasClass('hidden') || this.hasClass('leave'))
+			this.enter(null, null, animateHeight);
+		else 
+			this.leave(true);
+	},
+
 	enter: function(element, method, animateHeight) {
+		if(!element) this.stop().clearQueue();
+
 		return this.queue(function(next) {
-			$(element)[method || 'append'](this);
+			if(element)
+				$(element)[method || 'append'](this);
+			else
+				$(this).removeClass('hidden').addClass('visible');
+
 			next();
 		}).queue(function(next) {
 			if(animateHeight)
 				$(this).css('height', this.scrollHeight);
+
 			next();
 		}).queue(enter).queue(done);
 	},
 
-	leave: function() {
-		return this.stop().queue([leave, remove]);
+	leave: function(_hide) {
+		return this.stop().queue([leave, _hide ? hide : remove ]);
 	}
 });
