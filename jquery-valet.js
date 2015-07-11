@@ -37,7 +37,7 @@ function leave() {
 
 // remove element when transition ends
 function remove(next) {
-	$(this).remove();
+	$(this).removeClass('animate leave active').remove();
 	next();
 }
 
