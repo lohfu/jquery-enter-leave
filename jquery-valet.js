@@ -13,17 +13,12 @@ function transition($el) {
 }
 
 function enter() {
-	$(this).addClass('animate enter');
+	$(this).addClass('animate enter').removeClass('hidden');
 
 	// force redraw
 	this.offsetHeight;
 
 	transition($(this).addClass('active').removeClass('leave'));
-}
-
-function done(next) {
-	$(this).removeClass('animate enter active');
-	next();
 }
 
 function leave() {
@@ -42,40 +37,57 @@ function remove(next) {
 }
 
 function hide(next) {
-	// TODO remove active, animate, leave
 	$(this).addClass('hidden').removeClass('visible');
+
+	next();
+}
+
+function setHeight(next) {
+	$(this).css('height', this.scrollHeight);
 
 	next();
 }
 
 $.fn.extend({
 
-	alternate: function(animateHeight) {
+	toggle: function(options) {
 		if(this.hasClass('hidden') || this.hasClass('leave'))
-			this.enter(null, null, animateHeight);
+			this.show(options);
 		else 
-			this.leave(true);
+			this.hide(options);
 	},
 
-	enter: function(element, method, animateHeight) {
-		if(!element) this.stop().clearQueue();
+	enter: function(element, options) {
+		options = options || {};
 
-		return this.queue(function(next) {
-			if(element)
-				$(element)[method || 'append'](this);
-			else
-				$(this).removeClass('hidden').addClass('visible');
+		this.queue(function(next) {
+			$(this).addClass(options.className);
 
-			next();
-		}).queue(function(next) {
-			if(animateHeight)
-				$(this).css('height', this.scrollHeight);
+			$(element)[options.method || 'append'](this);
 
 			next();
-		}).queue(enter).queue(done);
+		});
+
+		if (options.animateHeight)
+			this.queue(setHeight);
+
+		return this.queue(enter).queue(function(next) {
+			$(this).removeClass('animate enter active')
+				.removeClass(options.className);
+
+			next();
+		});
 	},
 
-	leave: function(_hide) {
-		return this.stop().queue([leave, _hide ? hide : remove ]);
+	leave: function() {
+		return this.stop().queue([ leave, remove ]);
+	},
+
+	show: function(options) {
+		return this.enter(null, options);
+	},
+
+	hide: function(options) {
+		return this.stop().queue([ leave, hide ]);
 	}
 });
