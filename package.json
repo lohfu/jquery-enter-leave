@@ -1,14 +1,14 @@
 {
-  "name": "jquery-valet",
+  "name": "jquery-enter-leave",
   "version": "0.1.0",
   "description": "Simplifies animating elements added or removed to the DOM. Greatly inspired by Angular's ngAnimate.",
-  "main": "jquery-valet.js",
+  "main": "jquery-enter-leave.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thecodebureau/jquery-valet.git"
+    "url": "git+https://github.com/lohfu/jquery-enter-leave.git"
   },
   "keywords": [
     "jQuery",
@@ -16,13 +16,14 @@
     "animation",
     "transition"
   ],
-  "author": "The Code Bureau <info@thecodebureau.com> (https://thecodebureau.com)",
-	"contributors": [
-		"Linus Miller <linus.miller@thecodebureau.com>"
-	],
+  "author": "Linus Miller <lohfu@lohfu.io> (https://lohfu.io)",
+  "contributors": [
+    "Linus Miller <lohfu@lohfu.io> (https://lohfu.io)",
+    "Victor Nilsson <victor.nilsson@thecodebureau.com>"
+  ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/thecodebureau/jquery-valet/issues"
+    "url": "https://github.com/lohfu/jquery-enter-leave/issues"
   },
-  "homepage": "https://github.com/thecodebureau/jquery-valet#readme"
+  "homepage": "https://github.com/lohfu/jquery-enter-leave"
 }
