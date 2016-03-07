@@ -60,14 +60,6 @@ function animate(className, options) {
 }
 
 $.fn.extend({
-
-	toggle: function(options) {
-		if(this.hasClass('hidden') || this.hasClass('leave'))
-			this.show(options);
-		else 
-			this.hide(options);
-	},
-
 	enter: function(element, options, complete) {
 		options = options || {};
 
@@ -109,23 +101,5 @@ $.fn.extend({
 		}
 		
 		return this.queue(leave.start).queue(leave.finish);
-	},
-
-	show: function(options) {
-		this.finish()
-			.queue(function(next) {
-				$(this).addClass('visible');
-
-				next();
-			});
-
-		return this.enter(null, options);
-	},
-
-	hide: function(options) {
-
-		return this.leave(options, function() {
-			$(this).addClass('hidden').removeClass('visible');
-		});
 	}
 });
