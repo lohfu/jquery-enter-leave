@@ -2,7 +2,7 @@
   "name": "jquery-enter-leave",
   "version": "0.1.0",
   "description": "Simplifies animating elements added or removed to the DOM. Greatly inspired by Angular's ngAnimate.",
-  "main": "jquery-enter-leave.js",
+  "main": "enter-leave.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
