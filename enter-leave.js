@@ -28,14 +28,6 @@ function transition(className, options, complete) {
 }
 
 function animate(className, options) {
-	// The extra offsetHeight is required to fix IE bug. if there is button in the page,
-	// the page will be placed at it's end location, then aniamted out until the enter active class is added.
-	//
-	// this bug can apparently be sorted by setting the start position in .animate instead of .page
-	//$(this).addClass('enter');
-
-	// force redraw
-	//this.offsetHeight;
 	var elem = $(this).addClass('animate ' + className);
 
 	// force redraw
